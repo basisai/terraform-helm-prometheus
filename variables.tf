@@ -452,7 +452,7 @@ variable "kube_state_metrics_chart_namespace" {
 
 variable "kube_state_metrics_repository" {
   description = "Docker repository for Kube State Metrics"
-  default     = "quay.io/coreos/kube-state-metrics"
+  default     = "k8s.gcr.io/kube-state-metrics/kube-state-metrics"
 }
 
 variable "kube_state_metrics_tag" {
