@@ -437,7 +437,7 @@ variable "kube_state_metrics_chart_name" {
 
 variable "kube_state_metrics_chart_repository" {
   description = "Helm repository for the chart"
-  default     = "stable"
+  default     = "https://prometheus-community.github.io/helm-charts"
 }
 
 variable "kube_state_metrics_chart_version" {
@@ -457,7 +457,7 @@ variable "kube_state_metrics_repository" {
 
 variable "kube_state_metrics_tag" {
   description = "Tag for Kube State Metrics Docker Image"
-  default     = "v1.5.0"
+  default     = "v2.0.0"
 }
 
 variable "kube_state_metrics_pull_policy" {
