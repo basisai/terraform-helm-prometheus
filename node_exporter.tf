@@ -23,6 +23,7 @@ locals {
     tag         = var.node_exporter_tag
     pull_policy = var.node_exporter_pull_policy
 
+    pod_security_policy_enable      = var.pod_security_policy_enable
     pod_security_policy_annotations = jsonencode(var.node_exporter_pod_security_policy_annotations)
 
     resources = jsonencode(var.node_exporter_resources)
@@ -43,8 +44,8 @@ locals {
     priority_class_name = var.node_exporter_priority_class_name
     extra_args          = jsonencode(var.node_exporter_extra_args)
 
-    service_annotations      = jsonencode(var.node_exporter_service_annotations)
-    service_port             = var.node_exporter_service_port
-    service_type             = var.node_exporter_service_type
+    service_annotations = jsonencode(var.node_exporter_service_annotations)
+    service_port        = var.node_exporter_service_port
+    service_type        = var.node_exporter_service_type
   }
 }

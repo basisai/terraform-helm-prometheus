@@ -37,15 +37,15 @@ locals {
 
     alert_relabel_configs = jsonencode(var.alert_relabel_configs)
 
-    alertmanager_service_account       = var.alertmanager_service_account
-    node_exporter_service_account      = var.node_exporter_service_account
-    pushgateway_service_account        = var.pushgateway_service_account
-    server_service_account             = var.server_service_account
+    alertmanager_service_account  = var.alertmanager_service_account
+    node_exporter_service_account = var.node_exporter_service_account
+    pushgateway_service_account   = var.pushgateway_service_account
+    server_service_account        = var.server_service_account
 
-    alertmanager_service_account_annotations       = jsonencode(var.alertmanager_service_account_annotations)
-    node_exporter_service_account_annotations      = jsonencode(var.node_exporter_service_account_annotations)
-    pushgateway_service_account_annotations        = jsonencode(var.pushgateway_service_account_annotations)
-    server_service_account_annotations             = jsonencode(var.server_service_account_annotations)
+    alertmanager_service_account_annotations  = jsonencode(var.alertmanager_service_account_annotations)
+    node_exporter_service_account_annotations = jsonencode(var.node_exporter_service_account_annotations)
+    pushgateway_service_account_annotations   = jsonencode(var.pushgateway_service_account_annotations)
+    server_service_account_annotations        = jsonencode(var.server_service_account_annotations)
   }
 
   alertmanager_values = {

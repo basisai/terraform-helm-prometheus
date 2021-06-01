@@ -643,6 +643,31 @@ variable "node_exporter_enable" {
   default     = "true"
 }
 
+variable "node_exporter_release_name" {
+  description = "Helm release name for Node Exporter"
+  default     = "prometheus-node-exporter"
+}
+
+variable "node_exporter_chart_name" {
+  description = "Helm chart name to provision for Node Exporter"
+  default     = "prometheus-node-exporter"
+}
+
+variable "node_exporter_chart_repository" {
+  description = "Helm repository for the Node Exporter chart"
+  default     = "https://prometheus-community.github.io/helm-charts"
+}
+
+variable "node_exporter_chart_version" {
+  description = "Version of Node Exporter Chart to install. Set to empty to install the latest version"
+  default     = ""
+}
+
+variable "node_exporter_chart_namespace" {
+  description = "Namespace to install the chart into"
+  default     = "default"
+}
+
 variable "node_exporter_host_network" {
   description = "Use the Host network namespace for Node Exporter"
   default     = "true"
