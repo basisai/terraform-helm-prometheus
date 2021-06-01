@@ -1,5 +1,5 @@
 resource "helm_release" "prometheus" {
-  count = var.prometheus_enabled ? 1 : 0
+  count = var.prometheus_enable ? 1 : 0
 
   name       = var.release_name
   chart      = var.chart_name

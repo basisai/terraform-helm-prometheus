@@ -1,4 +1,4 @@
-variable "prometheus_enabled" {
+variable "prometheus_enable" {
   description = "Enable Prometheus stack. Disable to use independent components like KSM and Node Exporter."
   default     = true
 }
