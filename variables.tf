@@ -1,3 +1,8 @@
+variable "prometheus_enabled" {
+  description = "Enable Prometheus stack. Disable to use independent components like KSM and Node Exporter."
+  default     = true
+}
+
 variable "release_name" {
   description = "Helm release name for Prometheus"
   default     = "prometheus"
@@ -640,11 +645,6 @@ variable "node_exporter_enable" {
 
 variable "node_exporter_host_network" {
   description = "Use the Host network namespace for Node Exporter"
-  default     = "true"
-}
-
-variable "node_exporter_host_pid" {
-  description = "Use the Network PID namespace for Node Exporter"
   default     = "true"
 }
 
