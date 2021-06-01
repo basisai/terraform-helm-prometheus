@@ -86,7 +86,7 @@ affinity: {}
 podAnnotations: ${annotations}
 
 # Extra labels to be added to node exporter pods
-podLabels: ${pod_labels}
+podLabels: ${labels}
 
 # Custom DNS configuration to be added to prometheus-node-exporter pods
 dnsConfig: {}

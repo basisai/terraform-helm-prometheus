@@ -17,10 +17,7 @@ resource "helm_release" "node_exporter" {
 
 locals {
   node_exporter_values = {
-    enable = var.node_exporter_enable
-
     host_network = var.node_exporter_host_network
-    host_pid     = var.node_exporter_host_pid
 
     repository  = var.node_exporter_repository
     tag         = var.node_exporter_tag
@@ -28,7 +25,6 @@ locals {
 
     pod_security_policy_annotations = jsonencode(var.node_exporter_pod_security_policy_annotations)
 
-    replica   = var.node_exporter_replica
     resources = jsonencode(var.node_exporter_resources)
 
     annotations   = jsonencode(var.node_exporter_annotations)
@@ -48,17 +44,7 @@ locals {
     extra_args          = jsonencode(var.node_exporter_extra_args)
 
     service_annotations      = jsonencode(var.node_exporter_service_annotations)
-    service_labels           = jsonencode(var.node_exporter_service_labels)
-    service_cluster_ip       = jsonencode(var.node_exporter_service_cluster_ip)
-    service_external_ips     = jsonencode(var.node_exporter_service_external_ips)
-    service_lb_ip            = jsonencode(var.node_exporter_service_lb_ip)
-    service_lb_source_ranges = jsonencode(var.node_exporter_service_lb_source_ranges)
     service_port             = var.node_exporter_service_port
     service_type             = var.node_exporter_service_type
-
-    pod_security_policy_annotations = jsonencode(var.node_exporter_pod_security_policy_annotations)
-
-    pdb_enable          = var.node_exporter_pdb_enable
-    pdb_max_unavailable = jsonencode(var.node_exporter_pdb_max_unavailable)
   }
 }

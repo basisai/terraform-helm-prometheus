@@ -698,11 +698,6 @@ variable "node_exporter_node_selector" {
   default     = {}
 }
 
-variable "node_exporter_replica" {
-  description = "Number of replicas for Node Exporter"
-  default     = 1
-}
-
 variable "node_exporter_resources" {
   description = "Resources for node_exporter"
   default     = {}
@@ -733,31 +728,6 @@ variable "node_exporter_service_annotations" {
   }
 }
 
-variable "node_exporter_service_labels" {
-  description = "Labels for Node Exporter service"
-  default     = {}
-}
-
-variable "node_exporter_service_cluster_ip" {
-  description = "Cluster IP for Node Exporter Service"
-  default     = "None"
-}
-
-variable "node_exporter_service_external_ips" {
-  description = "External IPs for Node Exporter service"
-  default     = []
-}
-
-variable "node_exporter_service_lb_ip" {
-  description = "Load Balancer IP for Node Exporter service"
-  default     = ""
-}
-
-variable "node_exporter_service_lb_source_ranges" {
-  description = "List of source CIDRs allowed to access the Node Exporter LB"
-  default     = []
-}
-
 variable "node_exporter_service_port" {
   description = "Service port for Node Exporter"
   default     = 9100
@@ -786,16 +756,6 @@ variable "node_exporter_pod_security_policy_annotations" {
     "seccomp.security.alpha.kubernetes.io/defaultProfileName"  = "runtime/default"
     "apparmor.security.beta.kubernetes.io/defaultProfileName"  = "runtime/default"
   }
-}
-
-variable "node_exporter_pdb_enable" {
-  description = "Enable PDB"
-  default     = true
-}
-
-variable "node_exporter_pdb_max_unavailable" {
-  description = "Max unavailable pods"
-  default     = 1
 }
 
 ################################
