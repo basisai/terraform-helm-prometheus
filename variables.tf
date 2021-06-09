@@ -53,18 +53,8 @@ variable "enable_network_policy" {
   default     = "false"
 }
 
-variable "alertmanager_service_account" {
-  description = "Name of the service account for AlertManager. Defaults to component's fully qualified name."
-  default     = ""
-}
-
 variable "kube_state_metrics_service_account" {
   description = "Name of the service account for kubeStateMetrics. Defaults to component's fully qualified name."
-  default     = ""
-}
-
-variable "node_exporter_service_account" {
-  description = "Name of the service account for nodeExporter. Defaults to component's fully qualified name."
   default     = ""
 }
 
@@ -78,17 +68,7 @@ variable "server_service_account" {
   default     = ""
 }
 
-variable "alertmanager_service_account_annotations" {
-  description = "Annotations for the service account"
-  default     = {}
-}
-
 variable "kube_state_metrics_service_account_annotations" {
-  description = "Annotations for the service account"
-  default     = {}
-}
-
-variable "node_exporter_service_account_annotations" {
   description = "Annotations for the service account"
   default     = {}
 }
@@ -187,6 +167,16 @@ variable "alertmanager_tag" {
 variable "alertmanager_pull_policy" {
   description = "Image pull policy for Alertmanager"
   default     = "IfNotPresent"
+}
+
+variable "alertmanager_service_account" {
+  description = "Name of the service account for AlertManager. Defaults to component's fully qualified name."
+  default     = ""
+}
+
+variable "alertmanager_service_account_annotations" {
+  description = "Annotations for the service account"
+  default     = {}
 }
 
 variable "alertmanager_extra_args" {
@@ -588,6 +578,16 @@ variable "node_exporter_tag" {
 variable "node_exporter_pull_policy" {
   description = "Image pull policy for Node Exporter"
   default     = "IfNotPresent"
+}
+
+variable "node_exporter_service_account" {
+  description = "Name of the service account for nodeExporter. Defaults to component's fully qualified name."
+  default     = ""
+}
+
+variable "node_exporter_service_account_annotations" {
+  description = "Annotations for the service account"
+  default     = {}
 }
 
 variable "node_exporter_enable_pod_security_policy" {
