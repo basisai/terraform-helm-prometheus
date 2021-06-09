@@ -103,11 +103,6 @@ variable "server_service_account_annotations" {
   default     = {}
 }
 
-variable "alert_relabel_configs" {
-  description = "Adds option to add alert_relabel_configs to avoid duplicate alerts in alertmanager useful in H/A prometheus with different external labels but the same alerts"
-  default     = {}
-}
-
 ################################
 # ConfigMap Reload
 ################################
@@ -169,49 +164,9 @@ variable "alertmanager_pull_policy" {
   default     = "IfNotPresent"
 }
 
-variable "alertmanager_priority_class_name" {
-  description = "Priority Class Name for Alertmanager pods"
-  default     = ""
-}
-
 variable "alertmanager_extra_args" {
   description = "Extra arguments for Alertmanager container"
   default     = {}
-}
-
-variable "alertmanager_extra_env" {
-  description = "Extra environment variables for Alertmanager container"
-  default     = {}
-}
-
-variable "alertmanager_extra_secret_mounts" {
-  description = "Defines additional mounts with secrets. Secrets must be manually created in the namespace."
-  default     = []
-}
-
-variable "alertmanager_prefix_url" {
-  description = "The URL prefix at which the container can be accessed. Useful in the case the '-web.external-url' includes a slug so that the various internal URLs are still able to access as they are in the default case."
-  default     = ""
-}
-
-variable "alertmanager_base_url" {
-  description = "External URL which can access alertmanager"
-  default     = "/"
-}
-
-variable "alertmanager_config_map_override_name" {
-  description = "ConfigMap override where fullname is {{.Release.Name}}-{{.Values.alertmanager.configMapOverrideName} Defining configMapOverrideName will cause templates/alertmanager-configmap.yaml to NOT generate a ConfigMap resource"
-  default     = ""
-}
-
-variable "alertmanager_config_from_secret" {
-  description = "The name of a secret in the same kubernetes namespace which contains the Alertmanager config Defining configFromSecret will cause templates/alertmanager-configmap.yaml to NOT generate a ConfigMap resource"
-  default     = ""
-}
-
-variable "alertmanager_config_file_name" {
-  description = "The configuration file name to be loaded to alertmanager Must match the key within configuration loaded from ConfigMap/Secret"
-  default     = "alertmanager.yml"
 }
 
 variable "alertmanager_ingress_enabled" {
@@ -221,11 +176,6 @@ variable "alertmanager_ingress_enabled" {
 
 variable "alertmanager_ingress_annotations" {
   description = "Annotations for Alertmanager ingress"
-  default     = {}
-}
-
-variable "alertmanager_ingress_extra_labels" {
-  description = "Additional labels for Alertmanager ingress"
   default     = {}
 }
 
@@ -272,16 +222,6 @@ variable "alertmanager_pv_access_modes" {
   ]
 }
 
-variable "alertmanager_pv_annotations" {
-  description = "Annotations for Alertmanager PV"
-  default     = {}
-}
-
-variable "alertmanager_pv_existing_claim" {
-  description = "Use an existing PV claim for alertmanager"
-  default     = ""
-}
-
 variable "alertmanager_pv_size" {
   description = "alertmanager data Persistent Volume size"
   default     = "2Gi"
@@ -292,29 +232,9 @@ variable "alertmanager_storage_class" {
   default     = ""
 }
 
-variable "alertmanager_volume_binding_mode" {
-  description = "Alertmanager data Persistent Volume Binding Mode"
-  default     = ""
-}
-
-variable "alertmanager_sub_path" {
-  description = "Subdirectory of alertmanager data Persistent Volume to mount"
-  default     = ""
-}
-
 variable "alertmanager_replica" {
   description = "Number of replicas for AlertManager"
   default     = 1
-}
-
-variable "alertmanager_headless_annotations" {
-  description = "Annotations for alertmanager StatefulSet headless service"
-  default     = {}
-}
-
-variable "alertmanager_headless_labels" {
-  description = "Labels for alertmanager StatefulSet headless service"
-  default     = {}
 }
 
 variable "alertmanager_resources" {
@@ -344,31 +264,6 @@ variable "alertmanager_service_annotations" {
   default     = {}
 }
 
-variable "alertmanager_service_labels" {
-  description = "Labels for Alertmanager service"
-  default     = {}
-}
-
-variable "alertmanager_service_cluster_ip" {
-  description = "Cluster IP for Alertmanager Service"
-  default     = ""
-}
-
-variable "alertmanager_service_external_ips" {
-  description = "External IPs for Alertmanager service"
-  default     = []
-}
-
-variable "alertmanager_service_lb_ip" {
-  description = "Load Balancer IP for Alertmanager service"
-  default     = ""
-}
-
-variable "alertmanager_service_lb_source_ranges" {
-  description = "List of source CIDRs allowed to access the Alertmanager LB"
-  default     = []
-}
-
 variable "alertmanager_service_port" {
   description = "Service port for Alertmanager"
   default     = 80
@@ -379,45 +274,27 @@ variable "alertmanager_service_type" {
   default     = "ClusterIP"
 }
 
-variable "alertmanager_pod_security_policy_annotations" {
-  description = "PodSecurityPolicy annotations for alertmanager"
-  default = {
-    "seccomp.security.alpha.kubernetes.io/allowedProfileNames" = "docker/default,runtime/default"
-    "apparmor.security.beta.kubernetes.io/allowedProfileNames" = "runtime/default"
-    "seccomp.security.alpha.kubernetes.io/defaultProfileName"  = "runtime/default"
-    "apparmor.security.beta.kubernetes.io/defaultProfileName"  = "runtime/default"
-  }
-}
-
-variable "alertmanager_pdb_enable" {
-  description = "Enable PDB"
-  default     = true
-}
-
-variable "alertmanager_pdb_max_unavailable" {
-  description = "Max unavailable pods for Alertmanager"
-  default     = 1
-}
-
-variable "alertmanager_files" {
+variable "alertmanager_config" {
   description = "Additional ConfigMap entries for Alertmanager in YAML string"
 
   default = <<EOF
-alertmanager.yml:
-  global: {}
-    # slack_api_url: ''
+global: {}
+  # slack_api_url: ''
 
-  receivers:
-    - name: default-receiver
-      # slack_configs:
-      #  - channel: '@you'
-      #    send_resolved: true
+templates:
+  - '/etc/alertmanager/*.tmpl'
 
-  route:
-    group_wait: 10s
-    group_interval: 5m
-    receiver: default-receiver
-    repeat_interval: 3h
+receivers:
+  - name: default-receiver
+    # slack_configs:
+    #  - channel: '@you'
+    #    send_resolved: true
+
+route:
+  group_wait: 10s
+  group_interval: 5m
+  receiver: default-receiver
+  repeat_interval: 3h
 EOF
 
 }
