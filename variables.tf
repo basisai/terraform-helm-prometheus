@@ -161,7 +161,7 @@ variable "alertmanager_repository" {
 
 variable "alertmanager_tag" {
   description = "Tag for Alertmanager Docker Image"
-  default     = "v0.16.1"
+  default     = "v0.22.2"
 }
 
 variable "alertmanager_pull_policy" {
