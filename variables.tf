@@ -145,8 +145,33 @@ variable "configmap_resources" {
 # Alertmanager
 ################################
 variable "alertmanager_enable" {
-  description = "Enable Alert manager"
+  description = "Enable Alertmanager"
   default     = "true"
+}
+
+variable "alertmanager_release_name" {
+  description = "Helm release name for Alertmanager"
+  default     = "alertmanager"
+}
+
+variable "alertmanager_chart_name" {
+  description = "Helm Alertmanager chart name to provision"
+  default     = "alertmanager"
+}
+
+variable "alertmanager_chart_repository" {
+  description = "Helm repository for the Alertmanager chart"
+  default     = "https://prometheus-community.github.io/helm-charts"
+}
+
+variable "alertmanager_chart_version" {
+  description = "Version of Alertmanager chart to install. Set to empty to install the latest version"
+  default     = ""
+}
+
+variable "alertmanager_chart_namespace" {
+  description = "Namespace to install the Alertmanager chart into"
+  default     = "default"
 }
 
 variable "alertmanager_repository" {

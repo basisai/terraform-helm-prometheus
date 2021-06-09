@@ -1,3 +1,19 @@
+resource "helm_release" "alertmanager" {
+  count = var.alertmanager_enable ? 1 : 0
+
+  name       = var.alertmanager_release_name
+  chart      = var.alertmanager_chart_name
+  repository = var.alertmanager_chart_repository
+  version    = var.alertmanager_chart_version
+  namespace  = var.alertmanager_chart_namespace
+
+  max_history = var.max_history
+
+  values = [
+    templatefile("${path.module}/templates/alertmanager.yaml", local.alertmanager_values),
+  ]
+}
+
 locals {
   alertmanager_values = {
     repository  = var.alertmanager_repository
