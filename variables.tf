@@ -291,6 +291,7 @@ variable "alertmanager_service_type" {
 
 variable "alertmanager_config" {
   description = "Additional ConfigMap entries for Alertmanager in YAML string"
+  sensitive   = true
 
   default = <<EOF
 global: {}
