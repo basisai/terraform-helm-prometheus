@@ -88,9 +88,6 @@ podAnnotations: ${annotations}
 # Extra labels to be added to node exporter pods
 podLabels: ${labels}
 
-# Ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
-podDisruptionBudget: ${pdb}
-
 # Custom DNS configuration to be added to prometheus-node-exporter pods
 dnsConfig: {}
 # nameservers:
