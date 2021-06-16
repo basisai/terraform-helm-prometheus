@@ -33,6 +33,8 @@ locals {
     labels        = jsonencode(var.node_exporter_labels)
     node_selector = jsonencode(var.node_exporter_node_selector)
 
+    pdb = jsonencode(var.node_exporter_pdb)
+
     service_account             = var.node_exporter_service_account
     service_account_annotations = jsonencode(var.node_exporter_service_account_annotations)
 
