@@ -1269,18 +1269,18 @@ variable "server_data_retention" {
 variable "server_pod_probes" {
   description = "Prometheus server readiness and liveness probe initial delay and timeout"
 
-  default = <<EOF
-readinessProbeInitialDelay: 30
-readinessProbePeriodSeconds: 5
-readinessProbeTimeout: 10
-readinessProbeFailureThreshold: 3
-readinessProbeSuccessThreshold: 1
-livenessProbeInitialDelay: 30
-livenessProbePeriodSeconds: 15
-livenessProbeTimeout: 10
-livenessProbeFailureThreshold: 3
-livenessProbeSuccessThreshold: 1
-EOF
+  default = {
+    readinessProbeInitialDelay : 30,
+    readinessProbePeriodSeconds : 5,
+    readinessProbeTimeout : 10,
+    readinessProbeFailureThreshold : 3,
+    readinessProbeSuccessThreshold : 1,
+    livenessProbeInitialDelay : 30,
+    livenessProbePeriodSeconds : 15,
+    livenessProbeTimeout : 10,
+    livenessProbeFailureThreshold : 3,
+    livenessProbeSuccessThreshold : 1
+  }
 }
 
 variable "server_termination_grace_seconds" {
