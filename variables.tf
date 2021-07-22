@@ -530,7 +530,36 @@ variable "kube_state_metrics_collection_namespace" {
 
 variable "kube_state_metrics_collectors" {
   description = "Collectors for Kube state metrics"
-  default     = []
+  default = [
+    "certificatesigningrequests",
+    "configmaps",
+    "cronjobs",
+    "daemonsets",
+    "deployments",
+    "endpoints",
+    "horizontalpodautoscalers",
+    "ingresses",
+    "jobs",
+    "limitranges",
+    "mutatingwebhookconfigurations",
+    "namespaces",
+    "networkpolicies",
+    "nodes",
+    "persistentvolumeclaims",
+    "persistentvolumes",
+    "poddisruptionbudgets",
+    "pods",
+    "replicasets",
+    "replicationcontrollers",
+    "resourcequotas",
+    "secrets",
+    "services",
+    "statefulsets",
+    "storageclasses",
+    "validatingwebhookconfigurations",
+    "verticalpodautoscalers",
+    "volumeattachments",
+  ]
 }
 
 ################################

@@ -13,13 +13,13 @@ This module makes use of following charts:
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
-| <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 2.1 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.1 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.2.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | >= 2.1 |
 
 ## Modules
 
@@ -94,7 +94,7 @@ No modules.
 | <a name="input_kube_state_metrics_chart_repository"></a> [kube\_state\_metrics\_chart\_repository](#input\_kube\_state\_metrics\_chart\_repository) | Helm repository for the chart | `string` | `"https://prometheus-community.github.io/helm-charts"` | no |
 | <a name="input_kube_state_metrics_chart_version"></a> [kube\_state\_metrics\_chart\_version](#input\_kube\_state\_metrics\_chart\_version) | Version of Chart to install. Set to empty to install the latest version | `string` | `""` | no |
 | <a name="input_kube_state_metrics_collection_namespace"></a> [kube\_state\_metrics\_collection\_namespace](#input\_kube\_state\_metrics\_collection\_namespace) | Specific namespaces to collect metrics for | `string` | `""` | no |
-| <a name="input_kube_state_metrics_collectors"></a> [kube\_state\_metrics\_collectors](#input\_kube\_state\_metrics\_collectors) | Collectors for Kube state metrics | `list` | `[]` | no |
+| <a name="input_kube_state_metrics_collectors"></a> [kube\_state\_metrics\_collectors](#input\_kube\_state\_metrics\_collectors) | Collectors for Kube state metrics | `list` | <pre>[<br>  "certificatesigningrequests",<br>  "configmaps",<br>  "cronjobs",<br>  "daemonsets",<br>  "deployments",<br>  "endpoints",<br>  "horizontalpodautoscalers",<br>  "ingresses",<br>  "jobs",<br>  "limitranges",<br>  "mutatingwebhookconfigurations",<br>  "namespaces",<br>  "networkpolicies",<br>  "nodes",<br>  "persistentvolumeclaims",<br>  "persistentvolumes",<br>  "poddisruptionbudgets",<br>  "pods",<br>  "replicasets",<br>  "replicationcontrollers",<br>  "resourcequotas",<br>  "secrets",<br>  "services",<br>  "statefulsets",<br>  "storageclasses",<br>  "validatingwebhookconfigurations",<br>  "verticalpodautoscalers",<br>  "volumeattachments"<br>]</pre> | no |
 | <a name="input_kube_state_metrics_container_security_context"></a> [kube\_state\_metrics\_container\_security\_context](#input\_kube\_state\_metrics\_container\_security\_context) | Security context for kube\_state\_metrics containers defined as a map which will be serialized to JSON. | `map` | `{}` | no |
 | <a name="input_kube_state_metrics_enable"></a> [kube\_state\_metrics\_enable](#input\_kube\_state\_metrics\_enable) | Enable Kube State Metrics | `string` | `"true"` | no |
 | <a name="input_kube_state_metrics_extra_args"></a> [kube\_state\_metrics\_extra\_args](#input\_kube\_state\_metrics\_extra\_args) | Extra arguments for Kube State Metrics container | `map` | `{}` | no |
